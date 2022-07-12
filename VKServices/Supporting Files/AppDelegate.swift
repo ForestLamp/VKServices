@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         let window = UIWindow(frame: UIScreen.main.bounds)
-        let tableViewController = MainTableTableViewController()
+        let tableViewController = MainTableViewController()
         window.rootViewController = tableViewController
         window.makeKeyAndVisible()
         self.window = window
