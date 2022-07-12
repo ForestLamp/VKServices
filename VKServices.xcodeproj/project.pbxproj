@@ -8,20 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		9FA20DB8287D8614004D7755 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA20DB7287D8614004D7755 /* AppDelegate.swift */; };
-		9FA20DBC287D8614004D7755 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA20DBB287D8614004D7755 /* ViewController.swift */; };
 		9FA20DC1287D8617004D7755 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FA20DC0287D8617004D7755 /* Assets.xcassets */; };
 		9FA20DC4287D8617004D7755 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FA20DC2287D8617004D7755 /* LaunchScreen.storyboard */; };
 		9FA20DCE287D873A004D7755 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA20DCD287D873A004D7755 /* Model.swift */; };
+		9FA20DD3287DAC94004D7755 /* MainTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA20DD2287DAC94004D7755 /* MainTableTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9FA20DB4287D8614004D7755 /* VKServices.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKServices.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FA20DB7287D8614004D7755 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9FA20DBB287D8614004D7755 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9FA20DC0287D8617004D7755 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9FA20DC3287D8617004D7755 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9FA20DC5287D8617004D7755 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FA20DCD287D873A004D7755 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		9FA20DD2287DAC94004D7755 /* MainTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +54,38 @@
 		9FA20DB6287D8614004D7755 /* VKServices */ = {
 			isa = PBXGroup;
 			children = (
-				9FA20DB7287D8614004D7755 /* AppDelegate.swift */,
-				9FA20DBB287D8614004D7755 /* ViewController.swift */,
-				9FA20DCD287D873A004D7755 /* Model.swift */,
-				9FA20DC0287D8617004D7755 /* Assets.xcassets */,
+				9FA20DE1287DB81E004D7755 /* Supporting Files */,
+				9FA20DDF287DB7C5004D7755 /* Model */,
+				9FA20DDE287DB7B9004D7755 /* View */,
 				9FA20DC2287D8617004D7755 /* LaunchScreen.storyboard */,
-				9FA20DC5287D8617004D7755 /* Info.plist */,
 			);
 			path = VKServices;
+			sourceTree = "<group>";
+		};
+		9FA20DDE287DB7B9004D7755 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9FA20DD2287DAC94004D7755 /* MainTableTableViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9FA20DDF287DB7C5004D7755 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9FA20DCD287D873A004D7755 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9FA20DE1287DB81E004D7755 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9FA20DB7287D8614004D7755 /* AppDelegate.swift */,
+				9FA20DC5287D8617004D7755 /* Info.plist */,
+				9FA20DC0287D8617004D7755 /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,7 +157,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FA20DBC287D8614004D7755 /* ViewController.swift in Sources */,
+				9FA20DD3287DAC94004D7755 /* MainTableTableViewController.swift in Sources */,
 				9FA20DB8287D8614004D7755 /* AppDelegate.swift in Sources */,
 				9FA20DCE287D873A004D7755 /* Model.swift in Sources */,
 			);
@@ -276,7 +300,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X8KHXL86W5;
-				INFOPLIST_FILE = VKServices/Info.plist;
+				INFOPLIST_FILE = "VKServices/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -295,7 +320,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X8KHXL86W5;
-				INFOPLIST_FILE = VKServices/Info.plist;
+				INFOPLIST_FILE = "VKServices/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
