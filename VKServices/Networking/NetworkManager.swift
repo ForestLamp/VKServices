@@ -13,11 +13,12 @@ protocol NetworkManagerDelegate: AnyObject {
 }
 
 class NetworkManager {
-
+    
     weak var delegate: NetworkManagerDelegate?
-
+    
     func fetchData(url: String) {
-        decodeData(url: url) { (result) in
+        decodeData(url: url) { [weak self] (result) in
+            guard let self = self else {return}
             switch result {
             case .success(let service):
                 DispatchQueue.main.async {
@@ -28,7 +29,7 @@ class NetworkManager {
             }
         }
     }
-
+    
     private func decodeData(url: String, completion: @escaping (Result<AllData?, Error>)-> Void) {
         guard let url = URL(string: url) else {return}
         let session = URLSession.shared
