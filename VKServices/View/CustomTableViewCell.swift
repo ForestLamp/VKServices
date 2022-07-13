@@ -11,19 +11,19 @@ import SwiftUI
 struct SwiftUIController: UIViewControllerRepresentable {
     typealias UIViewControllerType = MainTableViewController
     
- func makeUIViewController(context: Context) -> UIViewControllerType {
-  let vc = UIViewControllerType()
-  return vc
- }
- 
- func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
- }
+    func makeUIViewController(context: Context) -> UIViewControllerType {
+        let vc = UIViewControllerType()
+        return vc
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+    }
 }
 
 struct SwiftUIController_Previews: PreviewProvider {
- static var previews: some View {
-  SwiftUIController().edgesIgnoringSafeArea(.all)
- }
+    static var previews: some View {
+        SwiftUIController().edgesIgnoringSafeArea(.all)
+    }
 }
 
 class CustomTableViewCell: UITableViewCell {
@@ -32,32 +32,35 @@ class CustomTableViewCell: UITableViewCell {
     
     static let reuseID = "Cell"
     
-    private var service: Service?{
-        didSet {
-            if let service = service {
-                serviceNameLbl.text = service.name
-                serviceDescriptionLbl.text = service.serviceDescription
-            }
+    private var cellImage: UIImage? {
+        get {
+            return imageOfService.image
+        } set {
+                    //    self.activityIndicator.stopAnimating()
+                        self.activityIndicator.isHidden = false
+            imageOfService.image = newValue
         }
     }
     
     //MARK: - Create UI elements
     
+    private let activityIndicator: UIActivityIndicatorView = {
+       let activityIndicator = UIActivityIndicatorView()
+        return activityIndicator
+    }()
+    
     // Добавим View, для кастомного расположения элементов на ячейке
     private let cellView: UIView = {
         let view = UIView()
         view.backgroundColor = .black
-        view.layer.cornerRadius = 10
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     // ImageView для картинки сервиса
     private let imageOfService: UIImageView = {
-        let image = UIImageView(image: UIImage(named: "1"))
+        let image = UIImageView()
         image.contentMode = .scaleAspectFit
-        image.clipsToBounds = true
-        image.layer.cornerRadius = 10
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
@@ -66,16 +69,13 @@ class CustomTableViewCell: UITableViewCell {
     private let imageOfSelectCell: UIImageView = {
         let image = UIImageView(image: UIImage(systemName: "chevron.compact.right"))
         image.tintColor = .gray
- //       image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     
     // Label для названия сервиса
     private  let serviceNameLbl: UILabel = {
         let label = UILabel()
-//        label.text = "Сервис"
         label.textColor = .white
-        
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -84,13 +84,13 @@ class CustomTableViewCell: UITableViewCell {
     // Label для описания сервиса
     private  let serviceDescriptionLbl: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.boldSystemFont(ofSize: 12)
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
- //       label.lineBreakMode = .byWordWrapping
+        //       label.lineBreakMode = .byWordWrapping
         label.adjustsFontSizeToFitWidth = true
-  //      label.minimumScaleFactor = 5
+        //      label.minimumScaleFactor = 5
         return label
     }()
     
@@ -107,16 +107,13 @@ class CustomTableViewCell: UITableViewCell {
     
     // MARK: - Methods
     
-    func config(with service: Service){
-        self.service = service
-    }
     
     
     // MARK: - Constraints
     
     func setupConstraints() {
         addSubview(cellView)
- //       self.selectionStyle = .none
+        self.selectionStyle = .none
         
         let textStack = UIStackView(arrangedSubviews: [serviceNameLbl, serviceDescriptionLbl])
         textStack.axis = .vertical
@@ -143,7 +140,7 @@ class CustomTableViewCell: UITableViewCell {
             contentStack.trailingAnchor.constraint(equalTo: cellView.trailingAnchor),
             contentStack.bottomAnchor.constraint(equalTo: cellView.bottomAnchor),
             
-            imageOfService.heightAnchor.constraint(equalToConstant: 80),
+            imageOfService.heightAnchor.constraint(equalToConstant:80),
             imageOfService.widthAnchor.constraint(equalToConstant: 80),
             
             imageOfSelectCell.heightAnchor.constraint(equalToConstant: 17),
@@ -151,4 +148,22 @@ class CustomTableViewCell: UITableViewCell {
         ])
     }
     
+}
+
+extension CustomTableViewCell {
+    
+    func setupCell(model: Service) {
+        serviceNameLbl.text = model.name
+        serviceDescriptionLbl.text = model.serviceDescription
+        cellImage = UIImage()
+               self.activityIndicator.startAnimating()
+               self.activityIndicator.isHidden = false
+        DispatchQueue.global().async {
+            guard let imageUrl = URL(string: model.iconURL) else { return }
+            guard let imageData = try? Data(contentsOf: imageUrl) else { return }
+            DispatchQueue.main.async {
+                self.cellImage = UIImage(data: imageData)
+            }
+        }
+    }
 }

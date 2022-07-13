@@ -13,6 +13,9 @@
 		9FA20DCE287D873A004D7755 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA20DCD287D873A004D7755 /* Model.swift */; };
 		9FA20DD3287DAC94004D7755 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA20DD2287DAC94004D7755 /* MainTableViewController.swift */; };
 		9FA20DEA287DC053004D7755 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA20DE9287DC053004D7755 /* CustomTableViewCell.swift */; };
+		9FA20DEE287EBB5A004D7755 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA20DED287EBB5A004D7755 /* NetworkManager.swift */; };
+		9FA20DF1287EBBE2004D7755 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA20DF0287EBBE2004D7755 /* Api.swift */; };
+		9FA20DF6287EBF69004D7755 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA20DF5287EBF69004D7755 /* Alert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		9FA20DCD287D873A004D7755 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		9FA20DD2287DAC94004D7755 /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
 		9FA20DE9287DC053004D7755 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		9FA20DED287EBB5A004D7755 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		9FA20DF0287EBBE2004D7755 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		9FA20DF5287EBF69004D7755 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +65,8 @@
 				9FA20DE1287DB81E004D7755 /* Supporting Files */,
 				9FA20DDF287DB7C5004D7755 /* Model */,
 				9FA20DDE287DB7B9004D7755 /* View */,
+				9FA20DF3287EBF34004D7755 /* Networking */,
+				9FA20DF8287EBFBF004D7755 /* Extension */,
 				9FA20DC2287D8617004D7755 /* LaunchScreen.storyboard */,
 			);
 			path = VKServices;
@@ -89,6 +97,23 @@
 				9FA20DC0287D8617004D7755 /* Assets.xcassets */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9FA20DF3287EBF34004D7755 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				9FA20DED287EBB5A004D7755 /* NetworkManager.swift */,
+				9FA20DF0287EBBE2004D7755 /* Api.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		9FA20DF8287EBFBF004D7755 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				9FA20DF5287EBF69004D7755 /* Alert.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,10 +185,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FA20DF1287EBBE2004D7755 /* Api.swift in Sources */,
 				9FA20DD3287DAC94004D7755 /* MainTableViewController.swift in Sources */,
 				9FA20DB8287D8614004D7755 /* AppDelegate.swift in Sources */,
+				9FA20DEE287EBB5A004D7755 /* NetworkManager.swift in Sources */,
 				9FA20DEA287DC053004D7755 /* CustomTableViewCell.swift in Sources */,
 				9FA20DCE287D873A004D7755 /* Model.swift in Sources */,
+				9FA20DF6287EBF69004D7755 /* Alert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

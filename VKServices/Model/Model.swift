@@ -7,19 +7,19 @@
 
 import Foundation
 
-// MARK: - Welcome
-struct Welcome: Codable {
-    let body: Body
+
+struct AllData: Decodable {
+    let body: Results
     let status: Int
 }
 
-// MARK: - Body
-struct Body: Codable {
+// MARK: - Results
+struct Results: Decodable {
     let services: [Service]
 }
 
 // MARK: - Service
-struct Service: Codable {
+struct Service: Decodable {
     let name, serviceDescription: String
     let link: String
     let iconURL: String
