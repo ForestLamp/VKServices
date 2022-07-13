@@ -30,4 +30,5 @@ struct Service: Codable {
         case link
         case iconURL = "icon_url"
     }
+    
 }

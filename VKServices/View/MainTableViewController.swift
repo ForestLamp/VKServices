@@ -11,8 +11,8 @@ class MainTableViewController: UITableViewController {
     
     // MARK: - Private properties
     
-  //  private let testArray: [String] = ["First cell", "Second cell", "Third cell"]
-    private let cellID = "Cell"
+    private let testArray: [String] = ["First cell", "Second cell", "Third cell"]
+    
     
     // MARK: - Life cicle
     
@@ -24,18 +24,19 @@ class MainTableViewController: UITableViewController {
     // MARK: - Private methods
     
     private func registerCell(){
-        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: cellID)
+        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: CustomTableViewCell.reuseID)
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return 20
+        return testArray.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? CustomTableViewCell{
+        if let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.reuseID, for: indexPath) as? CustomTableViewCell{
+            cell.config(with: Service(name: "Имя", serviceDescription: "Описание", link: "Link", iconURL: "String"))
             return cell
         }
         return UITableViewCell()
