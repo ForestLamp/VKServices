@@ -7,25 +7,6 @@
 
 import SwiftUI
 
-
-struct SwiftUIController: UIViewControllerRepresentable {
-    typealias UIViewControllerType = MainTableViewController
-    
-    func makeUIViewController(context: Context) -> UIViewControllerType {
-        let vc = UIViewControllerType()
-        return vc
-    }
-    
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-    }
-}
-
-struct SwiftUIController_Previews: PreviewProvider {
-    static var previews: some View {
-        SwiftUIController().edgesIgnoringSafeArea(.all)
-    }
-}
-
 class CustomTableViewCell: UITableViewCell {
     
     // MARK: - Private properties
@@ -36,8 +17,8 @@ class CustomTableViewCell: UITableViewCell {
         get {
             return imageOfService.image
         } set {
-                    //    self.activityIndicator.stopAnimating()
-                        self.activityIndicator.isHidden = false
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
             imageOfService.image = newValue
         }
     }
@@ -46,6 +27,7 @@ class CustomTableViewCell: UITableViewCell {
     
     private let activityIndicator: UIActivityIndicatorView = {
        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         return activityIndicator
     }()
     
@@ -76,7 +58,7 @@ class CustomTableViewCell: UITableViewCell {
     private  let serviceNameLbl: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.font = UIFont.boldSystemFont(ofSize: 18)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -84,7 +66,7 @@ class CustomTableViewCell: UITableViewCell {
     // Label для описания сервиса
     private  let serviceDescriptionLbl: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 12)
+        label.font = UIFont.boldSystemFont(ofSize: 14)
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
@@ -117,8 +99,8 @@ class CustomTableViewCell: UITableViewCell {
         
         let textStack = UIStackView(arrangedSubviews: [serviceNameLbl, serviceDescriptionLbl])
         textStack.axis = .vertical
-        textStack.spacing = 0
-        textStack.alignment = .leading
+        textStack.spacing = 2
+        textStack.alignment = .top
         textStack.distribution = .equalCentering
         
         let contentStack = UIStackView(arrangedSubviews: [imageOfService, textStack, imageOfSelectCell])
@@ -128,6 +110,8 @@ class CustomTableViewCell: UITableViewCell {
         contentStack.alignment = .center
         contentStack.distribution = .fillProportionally
         contentStack.translatesAutoresizingMaskIntoConstraints = false
+        
+        imageOfService.addSubview(activityIndicator)
         
         NSLayoutConstraint.activate([
             cellView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
@@ -140,14 +124,16 @@ class CustomTableViewCell: UITableViewCell {
             contentStack.trailingAnchor.constraint(equalTo: cellView.trailingAnchor),
             contentStack.bottomAnchor.constraint(equalTo: cellView.bottomAnchor),
             
-            imageOfService.heightAnchor.constraint(equalToConstant:80),
-            imageOfService.widthAnchor.constraint(equalToConstant: 80),
+            imageOfService.heightAnchor.constraint(equalToConstant: 60),
+            imageOfService.widthAnchor.constraint(equalToConstant: 60),
+            
+            activityIndicator.centerXAnchor.constraint(equalTo: imageOfService.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: imageOfService.centerYAnchor),
             
             imageOfSelectCell.heightAnchor.constraint(equalToConstant: 17),
             imageOfSelectCell.widthAnchor.constraint(equalToConstant: 15)
         ])
     }
-    
 }
 
 extension CustomTableViewCell {

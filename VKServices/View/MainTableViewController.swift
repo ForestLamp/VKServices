@@ -11,47 +11,41 @@ class MainTableViewController: UITableViewController {
     
     // MARK: - Private properties
     
-    private let testArray: [String] = ["First cell", "Second cell", "Third cell"]
     private let api = Api()
     private let networkManager = NetworkManager()
     private var services: [Service] = []
-    
     
     // MARK: - Life cicle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerCell()
-        tableView.backgroundColor = .black
+
+        setupTable()
         getData()
+        setupNavBar()
     }
     
     // MARK: - Private methods
     
-    private func registerCell(){
-        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: CustomTableViewCell.reuseID)
+    private func getData(){
+        let baseURL = api.baseURL
+        networkManager.fetchData(url: baseURL)
+        networkManager.delegate = self
     }
     
-    private func getData(){
-        
-        let baseURL = api.baseURL
-        networkManager.fetchData(url: baseURL) { (result) in
-            switch result {
-            case .success(let service):
-                DispatchQueue.main.async {
-                    self.services = service?.body.services ?? []
-                    self.tableView.reloadData()
-                }
-            case .failure(_):
-                self.showAlertError(text: "Пожалуйста, проверьте соединение.")
-            }
-        }
+    private func setupTable(){
+        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: CustomTableViewCell.reuseID)
+        tableView.backgroundColor = .black
+    }
+    
+    private func setupNavBar(){
+        title = "Сервисы VK"
     }
     
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tableView.rowHeight = 100
+        tableView.rowHeight = 90
         return services.count
     }
     
@@ -69,4 +63,18 @@ class MainTableViewController: UITableViewController {
         // переход в сервис
     }
     
+}
+
+// MARK: - Extension
+
+extension MainTableViewController: NetworkManagerDelegate {
+    func showData(results: [Service]) {
+        services = results
+        tableView.reloadData()
+    }
+    
+    func showError() {
+        let alert = AlertManager.showAlertError(text: "Пожалуйста, проверьте соединение.")
+        present(alert, animated: true, completion: nil)
+    }
 }

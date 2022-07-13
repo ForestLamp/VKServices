@@ -16,12 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         let window = UIWindow(frame: UIScreen.main.bounds)
         let tableViewController = MainTableViewController()
-        window.rootViewController = tableViewController
+        let navController = UINavigationController(rootViewController: tableViewController)
+        UINavigationBar.appearance().barTintColor = UIColor(red: 46.0/255.0, green: 14.0/255.0, blue: 74.0/255.0, alpha: 1.0)
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        window.rootViewController = navController
         window.makeKeyAndVisible()
         self.window = window
         return true
     }
-    
 }
 
 
