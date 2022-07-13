@@ -64,13 +64,13 @@
 		9FA20DB6287D8614004D7755 /* VKServices */ = {
 			isa = PBXGroup;
 			children = (
-				9FA20DE1287DB81E004D7755 /* Supporting Files */,
+				9FA20DE1287DB81E004D7755 /* AppDelegate */,
 				9FA20DDF287DB7C5004D7755 /* Model */,
 				9FA20DDE287DB7B9004D7755 /* View */,
 				9FA20DFF287F7003004D7755 /* Controller */,
 				9FA20DF3287EBF34004D7755 /* Networking */,
 				9FA20DF8287EBFBF004D7755 /* Utils */,
-				9FA20DC2287D8617004D7755 /* LaunchScreen.storyboard */,
+				9FA20E05287F828A004D7755 /* Supporting Files */,
 			);
 			path = VKServices;
 			sourceTree = "<group>";
@@ -92,14 +92,12 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		9FA20DE1287DB81E004D7755 /* Supporting Files */ = {
+		9FA20DE1287DB81E004D7755 /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
 				9FA20DB7287D8614004D7755 /* AppDelegate.swift */,
-				9FA20DC5287D8617004D7755 /* Info.plist */,
-				9FA20DC0287D8617004D7755 /* Assets.xcassets */,
 			);
-			path = "Supporting Files";
+			path = AppDelegate;
 			sourceTree = "<group>";
 		};
 		9FA20DF3287EBF34004D7755 /* Networking */ = {
@@ -125,6 +123,16 @@
 				9FA20DFC287F6FF9004D7755 /* Brain.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		9FA20E05287F828A004D7755 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9FA20DC0287D8617004D7755 /* Assets.xcassets */,
+				9FA20DC2287D8617004D7755 /* LaunchScreen.storyboard */,
+				9FA20DC5287D8617004D7755 /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
