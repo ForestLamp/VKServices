@@ -5,7 +5,26 @@
 //  Created by Alex Ch. on 12.07.2022.
 //
 
-import UIKit
+import SwiftUI
+
+
+struct SwiftUIController: UIViewControllerRepresentable {
+    typealias UIViewControllerType = MainTableViewController
+    
+ func makeUIViewController(context: Context) -> UIViewControllerType {
+  let vc = UIViewControllerType()
+  return vc
+ }
+ 
+ func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+ }
+}
+
+struct SwiftUIController_Previews: PreviewProvider {
+ static var previews: some View {
+  SwiftUIController().edgesIgnoringSafeArea(.all)
+ }
+}
 
 class CustomTableViewCell: UITableViewCell {
     
@@ -27,7 +46,7 @@ class CustomTableViewCell: UITableViewCell {
     // Добавим View, для кастомного расположения элементов на ячейке
     private let cellView: UIView = {
         let view = UIView()
-        view.backgroundColor = .clear
+        view.backgroundColor = .black
         view.layer.cornerRadius = 10
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -37,7 +56,8 @@ class CustomTableViewCell: UITableViewCell {
     private let imageOfService: UIImageView = {
         let image = UIImageView(image: UIImage(named: "1"))
         image.contentMode = .scaleAspectFit
-//        image.clipsToBounds = true
+        image.clipsToBounds = true
+        image.layer.cornerRadius = 10
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
@@ -53,9 +73,10 @@ class CustomTableViewCell: UITableViewCell {
     // Label для названия сервиса
     private  let serviceNameLbl: UILabel = {
         let label = UILabel()
-        label.text = "Сервис"
-        label.textColor = UIColor.black
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+//        label.text = "Сервис"
+        label.textColor = .white
+        
+        label.font = UIFont.boldSystemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -63,10 +84,13 @@ class CustomTableViewCell: UITableViewCell {
     // Label для описания сервиса
     private  let serviceDescriptionLbl: UILabel = {
         let label = UILabel()
-        label.text = "Описание сервиса"
-        label.textColor = UIColor.black
         label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+ //       label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+  //      label.minimumScaleFactor = 5
         return label
     }()
     
@@ -96,7 +120,9 @@ class CustomTableViewCell: UITableViewCell {
         
         let textStack = UIStackView(arrangedSubviews: [serviceNameLbl, serviceDescriptionLbl])
         textStack.axis = .vertical
-        textStack.spacing = 4
+        textStack.spacing = 0
+        textStack.alignment = .leading
+        textStack.distribution = .equalCentering
         
         let contentStack = UIStackView(arrangedSubviews: [imageOfService, textStack, imageOfSelectCell])
         cellView.addSubview(contentStack)
@@ -120,7 +146,7 @@ class CustomTableViewCell: UITableViewCell {
             imageOfService.heightAnchor.constraint(equalToConstant: 80),
             imageOfService.widthAnchor.constraint(equalToConstant: 80),
             
-            imageOfSelectCell.heightAnchor.constraint(equalToConstant: 20),
+            imageOfSelectCell.heightAnchor.constraint(equalToConstant: 17),
             imageOfSelectCell.widthAnchor.constraint(equalToConstant: 15)
         ])
     }

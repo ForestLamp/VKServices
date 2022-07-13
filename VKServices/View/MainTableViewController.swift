@@ -36,7 +36,7 @@ class MainTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.reuseID, for: indexPath) as? CustomTableViewCell{
-            cell.config(with: Service(name: "Имя", serviceDescription: "Описание", link: "Link", iconURL: "String"))
+            cell.config(with: Service(name: "Имя", serviceDescription: "Игры для ПК, консолей и смартфонов, в которые играет сотни миллионов геймеров", link: "Link", iconURL: "String"))
             return cell
         }
         return UITableViewCell()

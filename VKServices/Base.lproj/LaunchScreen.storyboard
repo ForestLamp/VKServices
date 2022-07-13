@@ -22,10 +22,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chevron.compact.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Rhi-s3-FbI">
-                                <rect key="frame" x="181" y="182" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.046452783050000002" green="0.4816340804" blue="0.97589987519999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -40,7 +36,4 @@
             <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="chevron.compact.right" catalog="system" width="64" height="128"/>
-    </resources>
 </document>
