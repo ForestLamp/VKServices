@@ -8,11 +8,11 @@
 import SwiftUI
 
 class CustomTableViewCell: UITableViewCell {
-    
+
     // MARK: - Private properties
-    
+
     static let reuseID = "Cell"
-    
+
     private var cellImage: UIImage? {
         get {
             return imageOfService.image
@@ -22,15 +22,15 @@ class CustomTableViewCell: UITableViewCell {
             imageOfService.image = newValue
         }
     }
-    
+
     //MARK: - Create UI elements
-    
+
     private let activityIndicator: UIActivityIndicatorView = {
        let activityIndicator = UIActivityIndicatorView()
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         return activityIndicator
     }()
-    
+
     // Добавим View, для кастомного расположения элементов на ячейке
     private let cellView: UIView = {
         let view = UIView()
@@ -38,7 +38,7 @@ class CustomTableViewCell: UITableViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
+
     // ImageView для картинки сервиса
     private let imageOfService: UIImageView = {
         let image = UIImageView()
@@ -46,14 +46,14 @@ class CustomTableViewCell: UITableViewCell {
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
-    
+
     // ImageView для системной стрелки (шеврона)
     private let imageOfSelectCell: UIImageView = {
         let image = UIImageView(image: UIImage(systemName: "chevron.compact.right"))
         image.tintColor = .gray
         return image
     }()
-    
+
     // Label для названия сервиса
     private  let serviceNameLbl: UILabel = {
         let label = UILabel()
@@ -62,7 +62,7 @@ class CustomTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+
     // Label для описания сервиса
     private  let serviceDescriptionLbl: UILabel = {
         let label = UILabel()
@@ -75,34 +75,34 @@ class CustomTableViewCell: UITableViewCell {
         //      label.minimumScaleFactor = 5
         return label
     }()
-    
+
     // MARK: - Life cicle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: Self.reuseID)
         setupConstraints()
     }
-    
+
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
     // MARK: - Methods
-    
-    
-    
+
+
+
     // MARK: - Constraints
-    
+
     func setupConstraints() {
         addSubview(cellView)
         self.selectionStyle = .none
-        
+
         let textStack = UIStackView(arrangedSubviews: [serviceNameLbl, serviceDescriptionLbl])
         textStack.axis = .vertical
         textStack.spacing = 2
         textStack.alignment = .top
         textStack.distribution = .equalCentering
-        
+
         let contentStack = UIStackView(arrangedSubviews: [imageOfService, textStack, imageOfSelectCell])
         cellView.addSubview(contentStack)
         contentStack.axis = .horizontal
@@ -110,9 +110,9 @@ class CustomTableViewCell: UITableViewCell {
         contentStack.alignment = .center
         contentStack.distribution = .fillProportionally
         contentStack.translatesAutoresizingMaskIntoConstraints = false
-        
+
         imageOfService.addSubview(activityIndicator)
-        
+
         NSLayoutConstraint.activate([
             cellView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             cellView.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
@@ -137,7 +137,7 @@ class CustomTableViewCell: UITableViewCell {
 }
 
 extension CustomTableViewCell {
-    
+
     func setupCell(model: Service) {
         serviceNameLbl.text = model.name
         serviceDescriptionLbl.text = model.serviceDescription

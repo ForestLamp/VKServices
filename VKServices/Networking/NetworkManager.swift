@@ -13,9 +13,9 @@ protocol NetworkManagerDelegate: AnyObject {
 }
 
 class NetworkManager {
-    
+
     weak var delegate: NetworkManagerDelegate?
-    
+
     func fetchData(url: String) {
         decodeData(url: url) { (result) in
             switch result {
@@ -28,7 +28,7 @@ class NetworkManager {
             }
         }
     }
-    
+
     private func decodeData(url: String, completion: @escaping (Result<AllData?, Error>)-> Void) {
         guard let url = URL(string: url) else {return}
         let session = URLSession.shared
@@ -46,25 +46,3 @@ class NetworkManager {
         }.resume()
     }
 }
-
-
-
-
-
-
-
-//    private func fetchData(){
-//
-//        let baseURL = api.baseURL
-//        networkManager.fetchData(url: baseURL) { (result) in
-//            switch result {
-//            case .success(let service):
-//                DispatchQueue.main.async {
-//                    self.services = service?.body.services ?? []
-//                    self.tableView.reloadData()
-//                }
-//            case .failure(_):
-//                self.showAlertError(text: "Пожалуйста, проверьте соединение.")
-//            }
-//        }
-//    }
