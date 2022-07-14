@@ -70,9 +70,7 @@ class CustomTableViewCell: UITableViewCell {
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        //       label.lineBreakMode = .byWordWrapping
         label.adjustsFontSizeToFitWidth = true
-        //      label.minimumScaleFactor = 5
         return label
     }()
     

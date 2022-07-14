@@ -18,7 +18,8 @@ final class Api {
             if let error = error {
                 print("Ошибка запроса: \(error)")
             }
-            guard let data = data else {return}
+            guard (response as? HTTPURLResponse)?.statusCode == 200,
+                  let data = data else {return}
             do {
                 let json = try JSONDecoder().decode(AllData.self, from: data)
                 completion(.success(json))

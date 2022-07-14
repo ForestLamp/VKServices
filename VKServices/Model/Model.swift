@@ -9,7 +9,6 @@ import Foundation
 
 struct AllData: Decodable {
     let body: Results
-    let status: Int
 }
 
 // MARK: - Results
