@@ -5,19 +5,20 @@
 //  Created by Alex Ch. on 13.07.2022.
 //
 
-import Foundation
+import UIKit
 
-protocol NetworkManagerDelegate: AnyObject {
+protocol NetworkManagerDelegate: class {
     func showData(results: [Service])
     func showError()
 }
 
-class NetworkManager {
+final class NetworkManager {
     
+    private let api = Api()
     weak var delegate: NetworkManagerDelegate?
     
     func fetchData(url: String) {
-        decodeData(url: url) { [weak self] (result) in
+        api.decodeData(url: url) { [weak self] (result) in
             guard let self = self else {return}
             switch result {
             case .success(let service):
@@ -30,20 +31,9 @@ class NetworkManager {
         }
     }
     
-    private func decodeData(url: String, completion: @escaping (Result<AllData?, Error>)-> Void) {
-        guard let url = URL(string: url) else {return}
-        let session = URLSession.shared
-        session.dataTask(with: url) { (data, response, error) in
-            if let error = error {
-                print("Ошибка запроса: \(error)")
-            }
-            guard let data = data else {return}
-            do {
-                let json = try JSONDecoder().decode(AllData.self, from: data)
-                completion(.success(json))
-            } catch let error {
-                print("Ошибка парсинга: \(error)")
-            }
-        }.resume()
+    func openService(from url: String){
+        if let url =  URL(string: url){
+            UIApplication.shared.open(url)
+        }
     }
 }

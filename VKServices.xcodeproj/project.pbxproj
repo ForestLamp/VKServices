@@ -16,7 +16,6 @@
 		9FA20DEE287EBB5A004D7755 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA20DED287EBB5A004D7755 /* NetworkManager.swift */; };
 		9FA20DF1287EBBE2004D7755 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA20DF0287EBBE2004D7755 /* Api.swift */; };
 		9FA20DF6287EBF69004D7755 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA20DF5287EBF69004D7755 /* AlertManager.swift */; };
-		9FA20DFD287F6FFA004D7755 /* Brain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA20DFC287F6FF9004D7755 /* Brain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +30,6 @@
 		9FA20DED287EBB5A004D7755 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		9FA20DF0287EBBE2004D7755 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		9FA20DF5287EBF69004D7755 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
-		9FA20DFC287F6FF9004D7755 /* Brain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +76,6 @@
 		9FA20DDE287DB7B9004D7755 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9FA20DD2287DAC94004D7755 /* MainTableViewController.swift */,
 				9FA20DE9287DC053004D7755 /* CustomTableViewCell.swift */,
 			);
 			path = View;
@@ -120,7 +117,7 @@
 		9FA20DFF287F7003004D7755 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9FA20DFC287F6FF9004D7755 /* Brain.swift */,
+				9FA20DD2287DAC94004D7755 /* MainTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -206,7 +203,6 @@
 			files = (
 				9FA20DF1287EBBE2004D7755 /* Api.swift in Sources */,
 				9FA20DD3287DAC94004D7755 /* MainTableViewController.swift in Sources */,
-				9FA20DFD287F6FFA004D7755 /* Brain.swift in Sources */,
 				9FA20DB8287D8614004D7755 /* AppDelegate.swift in Sources */,
 				9FA20DEE287EBB5A004D7755 /* NetworkManager.swift in Sources */,
 				9FA20DEA287DC053004D7755 /* CustomTableViewCell.swift in Sources */,

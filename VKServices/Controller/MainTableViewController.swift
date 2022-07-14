@@ -14,15 +14,14 @@ class MainTableViewController: UITableViewController {
     private let api = Api()
     private let networkManager = NetworkManager()
     private var services: [Service] = []
-    private let brain = Brain()
     
     // MARK: - Life cicle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavBar()
         setupTable()
         getData()
-        setupNavBar()
     }
     
     // MARK: - Private methods
@@ -61,7 +60,7 @@ class MainTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let serviseURL = services[indexPath.row].link
-        brain.openService(from: serviseURL)
+        networkManager.openService(from: serviseURL)
     }
 }
 
