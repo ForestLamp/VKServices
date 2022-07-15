@@ -7,6 +7,8 @@
 
 import UIKit
 
+    // MARK: - Protocol
+
 protocol NetworkManagerDelegate: class {
     func showData(results: [Service])
     func showError()
@@ -16,6 +18,8 @@ final class NetworkManager {
     
     private let api = Api()
     weak var delegate: NetworkManagerDelegate?
+    
+    // MARK: - Methods
     
     func fetchData(url: String) {
         api.decodeData(url: url) { [weak self] (result) in
